@@ -1,81 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <style>
-      .wrap{
-  	position: absolute;
-  	top: 50%;
- 	 left: 50%;
- 	 transform: translate(-50%, -50%);
-	  width: 300px;
-	  height: 300px;
-	  border: 1px solid #ddd;
-	  border-radius: 5px;
-	  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-	  overflow: hidden;
-	}
-
-.header{
-  padding: 5px;
-  text-align: center;
-  font-size: 14px;
-  color: #333;
-  background: #ddd;
-  cursor: default;
-}
-
-.header.active{
-	cursor: move;
-}
-    </style>
-    <script>
-      const wrap = document.querySelector(".wrap");
-	const header = document.querySelector(".header");
-	let lastX = 0;
-	let lastY = 0; 
-	let startX = 0; 
-	let startY = 0; 
-
-	// 1.
-	header.addEventListener('mousedown', function(e){
-	  e.preventDefault(); 
-	  startX = e.clientX; 
-	  startY = e.clientY; 
+	<head>
+	</head>
+	
+	<body>
 		
-	  // 2.  
-	  header.classList.add('active');	
-  
-	  // 3.
-	  document.addEventListener('mouseup', onRemoveEvent); 
-  
-	  // 4.
-	  document.addEventListener('mousemove', onMove); 
-	});
-
-	function onRemoveEvent() { 
-	  header.classList.remove('active');
-	  document.removeEventListener('mouseup', onRemoveEvent); 
-	  document.removeEventListener('mousemove', onMove); 
-	} 
-
-	function onMove(e) { 
-	  e.preventDefault(); 
- 	 lastX = startX - e.clientX; 
-	  lastY = startY - e.clientY; 
-
-	  startX = e.clientX; 
-	  startY = e.clientY; 
-
-	  wrap.style.top = `${wrap.offsetTop - lastY}px`;
-	  wrap.style.left = `${wrap.offsetLeft - lastX}px`;
-	}
-  </script>
-  <body>
-    <div class="wrap">
-    <div class="header">
-        이곳을 드래그 하세요.
-    </div>
-	    ㅁㄴㅇㄹ
-	    asdfasdf
-    </div>
-  </body>
+	</body>
 </html>
