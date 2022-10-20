@@ -1,93 +1,91 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Modal</title>   
-</head>
+    <meta charset="UTF-8">
+    <title>Modal</title>
     <style>
-
+        #modal.modal-overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(1.5px);
+            -webkit-backdrop-filter: blur(1.5px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        #modal .modal-window {
+            background: rgba( 69, 139, 197, 0.70 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 13.5px );
+            -webkit-backdrop-filter: blur( 13.5px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            width: 400px;
+            height: 500px;
+            position: relative;
+            top: -100px;
+            padding: 10px;
+        }
+        #modal .title {
+            padding-left: 10px;
+            display: inline;
+            text-shadow: 1px 1px 2px gray;
+            color: white;
+            
+        }
+        #modal .title h2 {
+            display: inline;
+        }
+        #modal .close-area {
+            display: inline;
+            float: right;
+            padding-right: 10px;
+            cursor: pointer;
+            text-shadow: 1px 1px 2px gray;
+            color: white;
+        }
         
-body{
- background:#aa2141
-     
-        } 
-        
-#root button{position: absolute; top:50%; left:50%; transform: translate(-50%, -50%);
-    background: #bf18b2;
-    font-weight: bold;
-    display:inline-block;
-    font-weight: 100%;
-    
-        }        
-        
-#modal {
-  display: none;    
-  position:relative;
-  width:100%;
-  height:100%;
-  z-index:1;
-}
-
-#modal h2 {
-  margin:0;
-    
-}
-
-#modal button {
-  display:inline-block;
-  width:100px;
-    background: #bf18b2;
-    font-weight: bold;
-  margin-left:calc(100% - 100px - 10px);
-}
-
-#modal .modal_content {
-  width:300px;
-  margin:100px auto;
-  padding:20px 10px;
-  background:#e326e3;
-  border:2px solid #666;
-}
-
-#modal .modal_layer {
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0, 0, 0, 0.5);
-  z-index:-1;
-}   
-</style>
+        #modal .content {
+            margin-top: 20px;
+            padding: 0px 10px;
+            text-shadow: 1px 1px 2px gray;
+            color: white;
+        }
+    </style>
+</head>
 <body>
-
-<div id="root">
-   
-    <button type="button" id="modal_opne_btn">열기</button>
-       
-</div>
-
-<div id="modal">
-   
-    <div class="modal_content">
-        <h2>확인</h2>
-       
-        <p>실행 완료되었습니다!</p>
-       
-        <button type="button" id="modal_close_btn">닫기</button>
-       
+    <div id="container">
+        <h2>Lorem Ipsum</h2>
+        <button id="btn-modal">모달 창 열기 버튼</button>
+        <div id="lorem-ipsum"></div>
     </div>
-   
-    <div class="modal_layer"></div>
-</div>
-
-</body>
+    <div id="modal" class="modal-overlay">
+        <div class="modal-window">
+            <div class="title">
+                <h2>모달</h2>
+            </div>
+            <div class="close-area">X</div>
+            <div class="content">
+                <p>가나다라마바사 아자차카타파하</p>
+                <p>가나다라마바사 아자차카타파하</p>
+                <p>가나다라마바사 아자차카타파하</p>
+                <p>가나다라마바사 아자차카타파하</p>
+                
+            </div>
+        </div>
+    </div>
     <script>
-    document.getElementById("modal_opne_btn").onclick = function() {
-        document.getElementById("modal").style.display="block";
-    }
-   
-    document.getElementById("modal_close_btn").onclick = function() {
-        document.getElementById("modal").style.display="none";
-    }   
-</script>
-</html>
+        const loremIpsum = document.getElementById("lorem-ipsum")
+        fetch("https://baconipsum.com/api/?type=all-meat&paras=200&format=html")
+            .then(response => response.text())
+            .then(result => loremIpsum.innerHTML = result)
+    </script>
+</body></html>
